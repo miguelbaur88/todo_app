@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>To-Do Liste</h2>
+<form method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">  <!-- CSRF-Token als verstecktes Feld hinzufügen -->
+    <input type="text" name="title" placeholder="Neues To-Do" required>
+    <button type="submit">Hinzufügen</button>
+</form>
+<ul>
+    {% for todo in todos %}
+    <li>
+        {{ todo.title }} - {% if todo.done %}Erledigt{% else %}<a href="{{ url_for('mark_done', todo_id=todo.id) }}">Als erledigt markieren</a>{% endif %}
+        <a href="{{ url_for('delete', todo_id=todo.id) }}">Löschen</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

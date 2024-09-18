@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>To-Do-App</h1>
+<p>Dies ist die Hauptseite deiner To-Do-App.</p>
+<p>Um fortzufahren, melde dich an oder registriere dich:</p>
+<a href="{{ url_for('login') }}">Login</a> | <a href="{{ url_for('register') }}">Registrieren</a>
+{% endblock %}
